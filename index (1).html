@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Clicker Bot Game - Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <h1 class="app-title">🎮 Telegram Clicker Bot</h1>
+                <div class="header-actions">
+                    <button id="theme-toggle" class="btn btn--outline btn--sm">🌙</button>
+                    <div class="status-indicator" id="bot-status">
+                        <span class="status-dot offline"></span>
+                        Bot Offline
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="tab-navigation">
+            <button class="tab-btn active" data-tab="setup">🔧 Bot Setup</button>
+            <button class="tab-btn" data-tab="dashboard">📊 Dashboard</button>
+            <button class="tab-btn" data-tab="admin">⚙️ Admin Panel</button>
+            <button class="tab-btn" data-tab="leaderboard">🏆 Leaderboard</button>
+            <button class="tab-btn" data-tab="simulator">🎮 Game Simulator</button>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            
+            <!-- Bot Setup Tab -->
+            <section id="setup-tab" class="tab-content active">
+                <div class="setup-container">
+                    <div class="setup-card">
+                        <h2>Bot Konfiguration</h2>
+                        <p>Konfiguriere deinen Telegram Bot für das Clicker Game</p>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="bot-token">Bot Token</label>
+                            <input type="text" id="bot-token" class="form-control" placeholder="1234567890:ABCdefGHIjklMNOpqrsTUVwxyz">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="bot-username">Bot Username</label>
+                            <input type="text" id="bot-username" class="form-control" placeholder="@YourClickerBot">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="welcome-message">Willkommens-Nachricht</label>
+                            <textarea id="welcome-message" class="form-control" rows="3" placeholder="Willkommen beim Clicker Game! 🎮">Willkommen beim Clicker Game! 🎮
+Tippe /start um zu beginnen!</textarea>
+                        </div>
+                        
+                        <button id="start-bot" class="btn btn--primary btn--full-width">🚀 Bot Starten</button>
+                        
+                        <div class="setup-instructions">
+                            <h3>Setup Anleitung:</h3>
+                            <ol>
+                                <li>Öffne <a href="https://t.me/botfather" target="_blank">@BotFather</a> in Telegram</li>
+                                <li>Sende /newbot um einen neuen Bot zu erstellen</li>
+                                <li>Wähle einen Namen und Username für deinen Bot</li>
+                                <li>Kopiere den Bot Token und füge ihn oben ein</li>
+                                <li>Klicke "Bot Starten" um die Konfiguration abzuschließen</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dashboard Tab -->
+            <section id="dashboard-tab" class="tab-content">
+                <div class="dashboard-grid">
+                    <!-- Stats Cards -->
+                    <div class="stats-row">
+                        <div class="stat-card">
+                            <div class="stat-icon">👥</div>
+                            <div class="stat-content">
+                                <h3 id="total-players">1,247</h3>
+                                <p>Gesamte Spieler</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🟢</div>
+                            <div class="stat-content">
+                                <h3 id="active-players">89</h3>
+                                <p>Aktive Spieler</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🖱️</div>
+                            <div class="stat-content">
+                                <h3 id="total-clicks">2,847,392</h3>
+                                <p>Gesamte Clicks</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">📈</div>
+                            <div class="stat-content">
+                                <h3 id="average-level">6.3</h3>
+                                <p>Durchschnitts-Level</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity Feed -->
+                    <div class="activity-section">
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>🔥 Live-Aktivitäten</h3>
+                                <button class="btn btn--sm btn--outline">Aktualisieren</button>
+                            </div>
+                            <div class="card__body">
+                                <div class="activity-feed" id="activity-feed">
+                                    <!-- Activities will be populated by JS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Server Status -->
+                    <div class="server-status">
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>🖥️ Server Status</h3>
+                                <span class="status status--success">Online</span>
+                            </div>
+                            <div class="card__body">
+                                <div class="status-metrics">
+                                    <div class="metric">
+                                        <span class="metric-label">Uptime:</span>
+                                        <span class="metric-value">99.7%</span>
+                                    </div>
+                                    <div class="metric">
+                                        <span class="metric-label">Täglich Aktiv:</span>
+                                        <span class="metric-value">234 Spieler</span>
+                                    </div>
+                                    <div class="metric">
+                                        <span class="metric-label">Top Spieler:</span>
+                                        <span class="metric-value">@MaxGamer</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Admin Panel Tab -->
+            <section id="admin-tab" class="tab-content">
+                <div class="admin-panels">
+                    <!-- Player Management -->
+                    <div class="admin-section">
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>👥 Spieler-Verwaltung</h3>
+                                <button class="btn btn--primary btn--sm" id="add-player">+ Neuer Spieler</button>
+                            </div>
+                            <div class="card__body">
+                                <div class="player-table-container">
+                                    <table class="player-table" id="players-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Spieler</th>
+                                                <th>Punkte</th>
+                                                <th>Level</th>
+                                                <th>Streak</th>
+                                                <th>Referrals</th>
+                                                <th>Aktionen</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Players will be populated by JS -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upgrade Configuration -->
+                    <div class="admin-section">
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>⬆️ Upgrade-System</h3>
+                                <button class="btn btn--primary btn--sm" id="add-upgrade">+ Neues Upgrade</button>
+                            </div>
+                            <div class="card__body">
+                                <div class="upgrades-grid" id="upgrades-grid">
+                                    <!-- Upgrades will be populated by JS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Broadcast Messages -->
+                    <div class="admin-section">
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>📢 Broadcast-Nachrichten</h3>
+                            </div>
+                            <div class="card__body">
+                                <div class="form-group">
+                                    <label class="form-label" for="broadcast-message">Nachricht an alle Spieler</label>
+                                    <textarea id="broadcast-message" class="form-control" rows="3" placeholder="Wichtige Ankündigung..."></textarea>
+                                </div>
+                                <div class="broadcast-actions">
+                                    <button class="btn btn--primary">📤 An alle senden</button>
+                                    <button class="btn btn--outline">📤 An aktive senden</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Leaderboard Tab -->
+            <section id="leaderboard-tab" class="tab-content">
+                <div class="leaderboard-container">
+                    <div class="card">
+                        <div class="card__header">
+                            <h3>🏆 Spieler-Rangliste</h3>
+                            <div class="leaderboard-filters">
+                                <select class="form-control" id="leaderboard-filter">
+                                    <option value="all">Alle Zeit</option>
+                                    <option value="weekly">Diese Woche</option>
+                                    <option value="monthly">Dieser Monat</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="card__body">
+                            <div class="leaderboard-list" id="leaderboard-list">
+                                <!-- Leaderboard will be populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Game Simulator Tab -->
+            <section id="simulator-tab" class="tab-content">
+                <div class="simulator-grid">
+                    <!-- Clicker Interface -->
+                    <div class="simulator-section">
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>🎮 Clicker Simulator</h3>
+                            </div>
+                            <div class="card__body">
+                                <div class="clicker-interface">
+                                    <div class="clicker-stats">
+                                        <div class="stat">
+                                            <span class="stat-label">Punkte:</span>
+                                            <span class="stat-value" id="sim-points">0</span>
+                                        </div>
+                                        <div class="stat">
+                                            <span class="stat-label">Level:</span>
+                                            <span class="stat-value" id="sim-level">1</span>
+                                        </div>
+                                        <div class="stat">
+                                            <span class="stat-label">Pro Click:</span>
+                                            <span class="stat-value" id="sim-per-click">1</span>
+                                        </div>
+                                    </div>
+                                    <button class="clicker-button" id="clicker-btn">
+                                        <span class="clicker-emoji">🎯</span>
+                                        <span class="clicker-text">CLICK!</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Shop Preview -->
+                    <div class="simulator-section">
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>🛒 Upgrade Shop</h3>
+                            </div>
+                            <div class="card__body">
+                                <div class="shop-items" id="shop-items">
+                                    <!-- Shop items will be populated by JS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bot Commands Preview -->
+                    <div class="simulator-section">
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>🤖 Bot-Befehle</h3>
+                            </div>
+                            <div class="card__body">
+                                <div class="commands-list" id="commands-list">
+                                    <!-- Commands will be populated by JS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Modal for editing players/upgrades -->
+        <div class="modal hidden" id="edit-modal">
+            <div class="modal-overlay" id="modal-overlay"></div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modal-title">Element bearbeiten</h3>
+                    <button class="modal-close" id="modal-close">×</button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    <!-- Modal content will be populated by JS -->
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn--outline" id="modal-cancel">Abbrechen</button>
+                    <button class="btn btn--primary" id="modal-save">Speichern</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
